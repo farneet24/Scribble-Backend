@@ -1,6 +1,8 @@
 import os
 import json
 import spacy
+from spacy.lang.en import English
+from spacy.pipeline import Sentencizer
 import textstat
 import numpy as np
 from collections import Counter
@@ -12,22 +14,30 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 
-# Load the English NLP model
-nlp = spacy.load("en_core_web_sm")
+# Initialize a blank English model
+nlp = English()
+
+# Add the built-in sentencizer component to the pipeline
+nlp.add_pipe('sentencizer')
+
+# You could use the default spaCy's stop words or define your own
+stop_words = spacy.lang.en.stop_words.STOP_WORDS
 
 def analyze_text(text):
-    
+    # Process the text using the NLP object
     doc = nlp(text)
-
-    # Get all words, and then filter out stopwords for certain calculations
+    
+    # Tokenization and filtering stopwords
     all_words = [token.text for token in doc if token.is_alpha]
-    filtered_words = [word for word in all_words if word not in nlp.Defaults.stop_words]
+    filtered_words = [word for word in all_words if word.lower() not in stop_words]
     
+    # Getting sentences
     sentences = list(doc.sents)
-    paragraphs = text.split('\n')
-    paragraphs = [i for i in paragraphs if i != ""];
     
-    # Metrics
+    # Handling paragraphs
+    paragraphs = [p for p in text.split('\n') if p]
+
+    # Calculations
     num_chars_with_spaces = len(text)
     num_chars_without_spaces = len(text.replace(" ", ""))
     num_words = len(all_words)
@@ -41,7 +51,7 @@ def analyze_text(text):
     unique_words = len(set(filtered_words))
     lexical_density = (unique_words / num_words) * 100 if num_words else 0
 
-    # Readability tests
+    # Readability scores using textstat
     readability_scores = {
         'flesch_reading_ease': textstat.flesch_reading_ease(text),
         'smog_index': textstat.smog_index(text),
@@ -50,7 +60,7 @@ def analyze_text(text):
         'automated_readability_index': textstat.automated_readability_index(text),
         'dale_chall_readability_score': textstat.dale_chall_readability_score(text),
     }
-    
+
     # Estimate reading time (average reading speed is approx. 200 wpm)
     reading_time_minutes = num_words / 200
 
