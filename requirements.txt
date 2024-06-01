@@ -14,3 +14,4 @@ whitenoise==6.5.0
 spacy==3.7.4
 en-core-web-sm==3.7.1
 textstat==0.7.3
+numpy==1.23.5
