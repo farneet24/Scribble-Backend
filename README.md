@@ -27,6 +27,6 @@ Visit the website: [Scribble](https://scribble-farneet.vercel.app/)
 For collaboration inquiries, contact via [LinkedIn](https://www.linkedin.com/in/farneet-singh-6b155b208/).
 
 ## License
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Licensed under the MIT License.
+Licensed under the Apache License.
