@@ -95,7 +95,7 @@ def analysis(request):
 
 
 gemini_llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=os.getenv('GEMINI_KEY'))
-gpt_llm = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0, api_key=os.getenv('OPENAI_KEY'))
+gpt_llm = ChatOpenAI(model="gpt-4o-mini", temperature=0, api_key=os.getenv('OPENAI_KEY'))
 llama_llm = ChatGroq(temperature=0, model_name="llama3-8b-8192", groq_api_key=os.getenv('GROQ_API_KEY'))
 
 # Task can be general, question, summary, paraphrase, sentiment, emotion, named, topic, translate
