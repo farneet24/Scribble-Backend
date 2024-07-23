@@ -24,7 +24,7 @@ The Scribble Backend is built using Django and serves as the core processing uni
 Visit the website: [Scribble](https://scribble-farneet.vercel.app/)
 
 ## Collaboration
-For collaboration inquiries, contact via [LinkedIn](https://www.linkedin.com/in/farneet-singh-6b155b208/). You can also checkout the [frontend code][https://github.com/farneet24/Scribble].
+For collaboration inquiries, contact via [LinkedIn](https://www.linkedin.com/in/farneet-singh-6b155b208/). You can also checkout the [frontend code](https://github.com/farneet24/Scribble).
 
 ## License
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
